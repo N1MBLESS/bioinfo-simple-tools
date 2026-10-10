@@ -1,6 +1,6 @@
 """Zacharie Blanchard"""
 
-from codon_nuc import GENETIC_CODE
+from donnes import GENETIC_CODE
 import sys
 
 def main():
