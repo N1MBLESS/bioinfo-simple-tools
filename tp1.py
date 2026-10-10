@@ -1,9 +1,11 @@
-"""BCM2550 - TP1 - Zacharie Blanchard"""
+"""Zacharie Blanchard"""
 
-from tp1_data import GENETIC_CODE
+from codon_nuc import GENETIC_CODE
+import sys
 
 def main():
-    """BCM2550 - TP1"""
+    """ Cette fonction sert a lire une sequence ADN Codant et la convertie 
+    en ARNm ensuite elle traduit cette sequence en nucleotides """
     #variables pour la foncion main
     sequence = input("mettre la sequence d'ADN ici: ").upper()
 
@@ -16,7 +18,7 @@ def main():
     for nucleotide in sequence:
         # verifier que la sequence est valide
         if nucleotide not in valid_nucleotide:
-            print(nucleotide + " is not a valid nucleotide...")
+            sys.exit(nucleotide + " is not a valid nucleotide...")
             valid_dna_seq = False
         # Transcription ADN vers ARN
         if nucleotide == "T":
@@ -30,17 +32,17 @@ def main():
     nuc_end = ["UAA","UGA","UAG"]
     if valid_dna_seq:
         if len(rna_sequence) % 3 != 0:
-            print("RNA sequence not valid:",len(rna_sequence),
+            sys.exit("RNA sequence not valid:",len(rna_sequence),
                 "is not a multiple of 3")
             valid_rna_seq = False
 
         if rna_sequence[:3] not in nuc_start:
-            print("RNA sequence not valid:",
+            sys.exit("RNA sequence not valid:",
                 rna_sequence[:3], "is not a start codon")
             valid_rna_seq = False
 
         if rna_sequence[-3:] not in nuc_end:
-            print("RNA sequence not valid:",
+            sys.exit("RNA sequence not valid:",
                 rna_sequence[-3:],"is not an stop codon")
             valid_rna_seq = False
 
